@@ -15,6 +15,8 @@ into this:
 [1..4, 6..6, 8..10]
 ```
 
+(or `%w[a b c d e g h i]` into `['a'..'e', 'g'..'i']`, or ... )
+
 ## Installation
 
 `gem install range_compressor`
