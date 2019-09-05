@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email         = ['janosch84@gmail.com']
 
   s.summary       = 'Compresses Arrays of Objects to Arrays of Ranges.'
-  s.homepage      = 'https://github.com/janosch-x/range_compressor'
+  s.homepage      = 'https://github.com/jaynetics/range_compressor'
   s.license       = 'MIT'
 
   s.files         = `git ls-files -z`.split("\x0").reject do |f|
