@@ -21,4 +21,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.8'
+  # SortedSet was moved to a gem in Ruby 3.
+  if RUBY_VERSION.to_f >= 3.0 && !RUBY_PLATFORM[/java/i]
+    s.add_development_dependency 'sorted_set', '~> 1.0'
+  end
 end
