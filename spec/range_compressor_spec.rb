@@ -69,8 +69,8 @@ RSpec.describe RangeCompressor do
       expect { RangeCompressor.compress(Set[1, :foo]) }.to raise_error(ArgumentError)
       expect { RangeCompressor.compress(:foo) }.to raise_error(ArgumentError)
       if RUBY_VERSION.to_f >= 3.0
-        expect { RangeCompressor.compress(Range.new(1, nil) }.to raise_error(ArgumentError)
-        expect { RangeCompressor.compress(Range.new(nil, 9) }.to raise_error(ArgumentError)
+        expect { RangeCompressor.compress(Range.new(1, nil)) }.to raise_error(ArgumentError)
+        expect { RangeCompressor.compress(Range.new(nil, 9)) }.to raise_error(ArgumentError)
       end
     end
   end
