@@ -1,7 +1,7 @@
 # RangeCompressor
 
 [![Gem Version](https://badge.fury.io/rb/range_compressor.svg)](http://badge.fury.io/rb/range_compressor)
-[![Build Status](https://travis-ci.org/jaynetics/range_compressor.svg?branch=master)](https://travis-ci.org/jaynetics/range_compressor)
+[![Build Status](https://github.com/jaynetics/range_compressor/workflows/tests/badge.svg)](https://github.com/jaynetics/range_compressor/actions)
 
 A micro-gem that turns this:
 
