@@ -33,6 +33,7 @@ module RangeCompressor
     CharacterSet
     CharacterSet::Pure
     ImmutableSet
+    RBTree
     SortedSet
   ].freeze
 
