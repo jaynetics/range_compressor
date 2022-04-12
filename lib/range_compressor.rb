@@ -4,6 +4,7 @@ module RangeCompressor
   module_function
 
   def compress(arg)
+    # make contents flat, unique, and sorted
     sorted_set = to_sorted_set(arg)
 
     ranges = []
@@ -40,24 +41,25 @@ module RangeCompressor
   def to_sorted_set(arg)
     if arg.nil?
       []
-    elsif arg.class.ancestors.any? { |anc| SORTED_SET_CLASSES.include? anc.to_s }
+    elsif (arg.class.ancestors.map(&:to_s) & SORTED_SET_CLASSES).any?
       arg
     elsif arg.respond_to?(:each)
       hash = {}
-      each_flattened(arg) { |el| hash[el] = true }
+      flatten(arg, hash)
       hash.keys.sort
     else
       raise(ArgumentError, 'value must be enumerable')
     end
   end
 
-  def each_flattened(arg, &block)
-    if arg.class == Range && (arg.begin.nil? || arg.end.nil?)
-      raise ArgumentError, 'beginless and endless Ranges are not supported'
-    elsif arg.respond_to?(:each)
-      arg.each { |el| each_flattened(el, &block) }
+  def flatten(arg, hash)
+    if arg.respond_to?(:each)
+      if arg.instance_of?(Range) && (arg.begin.nil? || arg.end.nil?)
+        raise ArgumentError, 'beginless and endless Ranges are not supported'
+      end
+      arg.each { |el| flatten(el, hash) }
     else
-      block.call(arg)
+      hash[arg] = true
     end
   end
 end
