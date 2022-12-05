@@ -8,20 +8,19 @@ module RangeCompressor
     sorted_set = to_sorted_set(arg)
 
     ranges = []
-    previous = nil
     current_start = nil
     current_end = nil
 
-    sorted_set.each do |object|
-      if previous.nil?
-        current_start = object
-      elsif previous.next != object
+    sorted_set.each do |item|
+      if current_start.nil?
+        # first iteration, start first range
+        current_start = item
+      elsif item != current_end.next
         # gap found, finalize previous range
         ranges << (current_start..current_end)
-        current_start = object
+        current_start = item
       end
-      current_end = object
-      previous = object
+      current_end = item
     end
 
     # add final range
